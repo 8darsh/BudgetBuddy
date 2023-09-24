@@ -1,0 +1,177 @@
+//
+//  InputExpenseViewController.swift
+//  BudgetBud
+//
+//  Created by Adarsh Singh on 23/09/23.
+//
+
+import UIKit
+
+class InputExpenseViewController: UIViewController {
+    
+    @IBOutlet var expenseTitleField: UITextField!
+    
+    @IBOutlet var expenseAmountField: UITextField!
+    
+    
+    @IBOutlet var expenseDateTime: UIDatePicker!
+    
+    @IBOutlet var dateTime: UITextField!
+    
+    @IBOutlet var billImage: UIImageView!
+    
+    @IBOutlet var typeBtn: UIButton!
+    
+    @IBOutlet var switchTransaction: UISwitch!
+    
+    @IBOutlet var creditDebitLabel: UILabel!
+    
+    
+    
+    @IBAction func datePickerBtn(_ sender: UIDatePicker) {
+        dateTime.inputView = expenseDateTime
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        dateTime.text = dateFormatter.string(from: expenseDateTime.date)
+    }
+    
+    var isUpdate = false
+    var index = Int()
+    var amountTxt = String()
+    
+    var expenseDetails: Expense?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.expenseTitleField.text = self.expenseDetails?.title
+        self.expenseAmountField.text = self.expenseDetails?.amount
+        self.dateTime.text = self.expenseDetails?.date
+        let path = getDocumentDirectory().appending(path: expenseDetails?.image ?? "hehe")
+        self.billImage.image = UIImage(contentsOfFile: path.path())
+        
+        if switchTransaction.isOn{
+            creditDebitLabel.text = "Debited(-)"
+        }else{
+            creditDebitLabel.text = "Credited(+)"
+        }
+
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(btnSave))
+    }
+    
+    @IBAction func typeBtnAction(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func switchTransactionBtn(_ sender: UISwitch) {
+        if sender.isOn{
+            creditDebitLabel.text = "Debited(-)"
+        }else{
+            creditDebitLabel.text = "Credited(+)"
+        }
+
+        
+    }
+    
+    
+
+    
+    
+
+}
+
+extension InputExpenseViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    
+    
+    @IBAction func addBillImageButton(_ sender: UIButton) {
+        let picker = UIImagePickerController()
+        let ac = UIAlertController(title: "Select Pics", message: "", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Gallery", style: .default){_ in
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.present(picker, animated: true)
+        })
+        ac.addAction(UIAlertAction(title: "Camera", style: .default){ _ in
+            picker.sourceType = .camera
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.present(picker, animated: true)
+        })
+
+        
+        present(ac,animated: true)
+        
+       
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        guard let image = info[.editedImage] as? UIImage else {return}
+        
+        self.billImage.image = image
+        let imageName = UUID().uuidString
+        let imagePath = getDocumentDirectory().appending(path: imageName)
+        
+        if let jpegData = image.jpegData(compressionQuality: 0.8){
+            try? jpegData.write(to: imagePath)
+            
+            if isUpdate{
+                DatabaseHelper.shared.editData(object: [
+                    "title":expenseTitleField.text!,
+                    "amount":"\(expenseAmountField.text!)",
+                    "image":imageName,
+                    "date":dateTime.text!,
+                    "type":switchTransaction.isOn
+                ], i: index)
+                isUpdate = false
+            }else{
+                DatabaseHelper.shared.save(object: [
+                    "title":expenseTitleField.text!,
+                    "amount":"\(expenseAmountField.text!)",
+                    "image":imageName,
+                    "date":dateTime.text!,
+                    "type":switchTransaction.isOn
+                ])
+            }
+        }
+        
+        
+        self.dismiss(animated: true)
+    }
+    func getDocumentDirectory() -> URL{
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths[0]
+    }
+    
+    
+}
+
+extension InputExpenseViewController{
+    
+    
+    @objc func btnSave(){
+
+        
+        let dic:([String:Any]) = ([
+            "title":expenseTitleField.text!,
+            "amount":"\(expenseAmountField.text!)",
+            "image":billImage.image as Any,
+            "date":dateTime.text!,
+            "type":switchTransaction.isOn
+        ])
+        if isUpdate{
+            DatabaseHelper.shared.editData(object: dic, i: index)
+            isUpdate = false
+        }else{
+            DatabaseHelper.shared.save(object: dic)
+        }
+        
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+}
