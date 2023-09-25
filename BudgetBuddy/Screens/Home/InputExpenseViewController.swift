@@ -20,7 +20,7 @@ class InputExpenseViewController: UIViewController {
     
     @IBOutlet var billImage: UIImageView!
     
-    @IBOutlet var typeBtn: UIButton!
+
     
     @IBOutlet var switchTransaction: UISwitch!
     
@@ -39,8 +39,13 @@ class InputExpenseViewController: UIViewController {
     var isUpdate = false
     var index = Int()
     var amountTxt = String()
-    
+    var isSaveBtnVisible = Bool()
+    var imageHandle:String?
     var expenseDetails: Expense?
+    var completion: (([String:Any]) -> Void)?
+    var expenseAmount = Int()
+    var currentBalance = Int()
+    var income = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.expenseTitleField.text = self.expenseDetails?.title
@@ -59,10 +64,6 @@ class InputExpenseViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(btnSave))
     }
     
-    @IBAction func typeBtnAction(_ sender: UIButton) {
-        
-        
-    }
     
     @IBAction func switchTransactionBtn(_ sender: UISwitch) {
         if sender.isOn{
@@ -73,6 +74,7 @@ class InputExpenseViewController: UIViewController {
 
         
     }
+ 
     
     
 
@@ -109,6 +111,7 @@ extension InputExpenseViewController: UIImagePickerControllerDelegate,UINavigati
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        isSaveBtnVisible = false
         
         guard let image = info[.editedImage] as? UIImage else {return}
         
@@ -119,24 +122,25 @@ extension InputExpenseViewController: UIImagePickerControllerDelegate,UINavigati
         if let jpegData = image.jpegData(compressionQuality: 0.8){
             try? jpegData.write(to: imagePath)
             
-            if isUpdate{
-                DatabaseHelper.shared.editData(object: [
-                    "title":expenseTitleField.text!,
-                    "amount":"\(expenseAmountField.text!)",
-                    "image":imageName,
-                    "date":dateTime.text!,
-                    "type":switchTransaction.isOn
-                ], i: index)
-                isUpdate = false
-            }else{
-                DatabaseHelper.shared.save(object: [
-                    "title":expenseTitleField.text!,
-                    "amount":"\(expenseAmountField.text!)",
-                    "image":imageName,
-                    "date":dateTime.text!,
-                    "type":switchTransaction.isOn
-                ])
-            }
+            imageHandle = imageName
+//            if isUpdate{
+//                DatabaseHelper.shared.editData(object: [
+//                    "title":expenseTitleField.text!,
+//                    "amount":"\(expenseAmountField.text!)",
+//                    "image":imageName,
+//                    "date":dateTime.text!,
+//                    "type":switchTransaction.isOn
+//                ], i: index)
+//                isUpdate = false
+//            }else{
+//                DatabaseHelper.shared.save(object: [
+//                    "title":expenseTitleField.text!,
+//                    "amount":"\(expenseAmountField.text!)",
+//                    "image":imageName,
+//                    "date":dateTime.text!,
+//                    "type":switchTransaction.isOn
+//                ])
+//            }
         }
         
         
@@ -153,17 +157,26 @@ extension InputExpenseViewController: UIImagePickerControllerDelegate,UINavigati
 
 extension InputExpenseViewController{
     
+
+    
     
     @objc func btnSave(){
-
         
+        expenseAmount = Int(expenseAmountField.text!)!
+        let dict = ([
+            "expenseAmount":expenseAmount
+        ])
+        guard let completion else {return}
+        completion(dict)
         let dic:([String:Any]) = ([
             "title":expenseTitleField.text!,
             "amount":"\(expenseAmountField.text!)",
-            "image":billImage.image as Any,
+            "image":imageHandle ?? "hehe",
             "date":dateTime.text!,
             "type":switchTransaction.isOn
         ])
+        
+
         if isUpdate{
             DatabaseHelper.shared.editData(object: dic, i: index)
             isUpdate = false
@@ -171,7 +184,7 @@ extension InputExpenseViewController{
             DatabaseHelper.shared.save(object: dic)
         }
         
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

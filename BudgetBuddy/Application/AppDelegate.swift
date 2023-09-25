@@ -1,23 +1,44 @@
 //
 //  AppDelegate.swift
-//  BudgetBuddy
+//  BudgetBud
 //
-//  Created by Adarsh Singh on 23/09/23.
+//  Created by Adarsh Singh on 25/09/23.
 //
 
 import UIKit
 import CoreData
-
+import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        print("Document Directory:", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not found")
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+          if error != nil || user == nil {
+            // Show the app's signed-out state.
+          } else {
+            // Show the app's signed-in state.
+          }
+        }
         return true
+    }
+    
+    func application(
+      _ app: UIApplication,
+      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+      var handled: Bool
+
+      handled = GIDSignIn.sharedInstance.handle(url)
+      if handled {
+        return true
+      }
+
+      // Handle other custom URL types.
+
+      // If not handled by this app, return false.
+      return false
     }
 
     // MARK: UISceneSession Lifecycle
@@ -43,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "BudgetBuddy")
+        let container = NSPersistentContainer(name: "BudgetBud")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

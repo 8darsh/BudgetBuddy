@@ -26,14 +26,47 @@ class DatabaseHelper{
         expense.date = object["date"] as? String
         expense.image = object["image"] as? String
         expense.type = object["type"] as? Bool ?? true
+ 
         
         do{
+            
             try context?.save()
         }catch{
             print("Not Saved")
         }
         
     }
+//    func saveBalance(object:[String:Any]){
+//        
+//        let balance = NSPersistentContainer(name: "Balance", managedObjectModel:Balance)
+//        
+//        balance.currentBalance = object["currentBalance"] as? String
+//        balance.expenseAmount = object["expenseAmount"] as? String
+//        balance.income = object["income"] as? String
+//        
+//        do{
+//            print(balance)
+//            try context?.save()
+//        }catch{
+//            print("Not Saved")
+//        }
+//        
+//    }
+//    
+//    func getDataBalance()->[Balance]{
+//        var balance = [Balance]()
+//        
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Balance")
+//        
+//        do{
+//            balance = try context?.fetch(fetchRequest) as! [Balance]
+//        }catch{
+//            print("Can't get data")
+//        }
+//        
+//        return balance
+//        
+//    }
     
     func getData()->[Expense]{
         var expenses = [Expense]()
@@ -41,11 +74,11 @@ class DatabaseHelper{
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Expense")
         
         do{
-            expenses = try context?.fetch(fetchRequest) as! [Expense]
+            expenses = try context?.fetch(fetchRequest) as? [Expense] ?? []
         }catch{
             print("Can't get data")
         }
-        
+    
         return expenses
         
     }
@@ -64,12 +97,14 @@ class DatabaseHelper{
         
     }
     
-    func editData<T>(object:[String:T], i: Int){
+    func editData(object:[String:Any], i: Int){
         let expense = getData()
         expense[i].title = object["title"] as? String
         expense[i].amount = object["amount"] as? String
         expense[i].image = object["image"] as? String
         expense[i].date = object["date"] as? String
+        expense[i].type = (object["type"] as? Bool)!
+
         
         do{
             try context?.save()

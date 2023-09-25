@@ -1,19 +1,18 @@
 //
-//  ProfileViewController.swift
-//  BudgetBud
+//  TabBarViewController.swift
+//  BudgetBuddy
 //
-//  Created by Adarsh Singh on 23/09/23.
+//  Created by Adarsh Singh on 25/09/23.
 //
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = .black
     }
     
 

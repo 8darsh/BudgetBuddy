@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import CoreData
+import LocalAuthentication
 class HomeViewController: UIViewController {
     
     
@@ -21,7 +22,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var monthYear: UILabel!
     
     var expenseSetter = Int()
-    var incomeSetter = Int()
+    var incomeSetter:Int = 60000
     var currentBalanceSetter = Int()
     
     @IBOutlet var expensesTitleLbl: UILabel?{
@@ -34,12 +35,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var currentBalanceTitleLabel: UILabel!
     
-    
-    
 
-    
     var expense = [Expense]()
-    
+   
+    var countIndex = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,18 +48,46 @@ class HomeViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM  yyyy"
         monthYear.text = dateFormatter.string(from: Date())
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addExpense))
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        incomeSetter = 60000
-        incomeTitleLabel.text = String(incomeSetter)
+        
+//        balance = DatabaseHelper.shared.getDataBalance()
+        self.expensesTitleLbl?.text = UserDefaults.standard.string(forKey: "expenseAmount")
+        self.incomeTitleLabel.text = UserDefaults.standard.string(forKey: "income")
+        self.currentBalanceTitleLabel.text = UserDefaults.standard.string(forKey: "currentBalance")
         self.expense = DatabaseHelper.shared.getData()
         self.tableView.reloadData()
     }
     
     @objc func addExpense(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "InputExpenseViewController") as! InputExpenseViewController
+        vc.completion = {
+            dict in
+            if vc.switchTransaction.isOn{
+                self.expenseSetter += dict["expenseAmount"] as! Int
+            }else{
+                
+                self.incomeSetter += dict["expenseAmount"] as! Int
+            }
+        
+        
+            self.currentBalanceSetter = self.incomeSetter - self.expenseSetter
+            UserDefaults.standard.setValue(String(self.currentBalanceSetter), forKey: "currentBalance")
+            UserDefaults.standard.setValue(String(self.expenseSetter), forKey: "expenseAmount")
+            UserDefaults.standard.setValue(String(self.incomeSetter), forKey: "income")
+//            var balanceDic:([String:String]) = ([
+//                "currentBalance":String(self.currentBalanceSetter),
+//                "expenseAmount":String(self.expenseSetter),
+//                "income":String(self.incomeSetter),
+//            ])
+//            self.countIndex += 1
+
+           
+        }
+
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -80,21 +107,17 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         let vc = self.storyboard?.instantiateViewController(identifier: "InputExpenseViewController") as! InputExpenseViewController
         cell?.expenseDate.text = expense[indexPath.row].date
         cell?.expenseTitle.text = expense[indexPath.row].title
+        
         if expense[indexPath.row].type{
             cell?.amountLbl.textColor = .systemRed
-
+            
             cell?.amountLbl.text = "-₹\(expense[indexPath.row].amount ?? "")"
-//            currentBalanceSetter = incomeSetter - expenseSetter
-//            currentBalanceTitleLabel.text = String(currentBalanceSetter)
         }else{
             cell?.amountLbl.textColor = .systemGreen
 
             cell?.amountLbl.text = "+₹\(expense[indexPath.row].amount ?? "")"
-//            incomeSetter += expenseSetter
-//            incomeTitleLabel.text = String(incomeSetter)
-//            currentBalanceSetter = incomeSetter + expenseSetter
-//            currentBalanceTitleLabel.text = String(currentBalanceSetter)
         }
+
         
         cell?.expenseImage.image = UIImage(systemName: "person.fill")
         return cell!
@@ -106,8 +129,10 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
     
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
+           
             expense = DatabaseHelper.shared.deletData(index: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         }
     }
     

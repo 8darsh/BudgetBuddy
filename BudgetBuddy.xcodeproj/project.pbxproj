@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D2AB6B652ABF2D320092558B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B642ABF2D320092558B /* AppDelegate.swift */; };
-		D2AB6B672ABF2D320092558B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B662ABF2D320092558B /* SceneDelegate.swift */; };
-		D2AB6B6F2ABF2D320092558B /* BudgetBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B6D2ABF2D320092558B /* BudgetBuddy.xcdatamodeld */; };
+		3C7255C9ADD3CD7C7B76F6F8 /* Pods_BudgetBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B8C7E356839F1CA86E7706 /* Pods_BudgetBuddy.framework */; };
+		D23A147C2AC1429100062EB8 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A147A2AC1429100062EB8 /* Expense+CoreDataClass.swift */; };
+		D23A147D2AC1429100062EB8 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A147B2AC1429100062EB8 /* Expense+CoreDataProperties.swift */; };
+		D29D48C12AC15E0600913594 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D48BF2AC15E0600913594 /* AppDelegate.swift */; };
+		D29D48C22AC15E0600913594 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D48C02AC15E0600913594 /* SceneDelegate.swift */; };
+		D29D48C52AC15E5000913594 /* BudgetBud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D29D48C32AC15E5000913594 /* BudgetBud.xcdatamodeld */; };
+		D29D48CC2AC1729D00913594 /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D48CA2AC1729D00913594 /* Balance+CoreDataClass.swift */; };
+		D29D48CD2AC1729D00913594 /* Balance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D48CB2AC1729D00913594 /* Balance+CoreDataProperties.swift */; };
 		D2AB6B712ABF2D330092558B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB6B702ABF2D330092558B /* Assets.xcassets */; };
 		D2AB6B742ABF2D330092558B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB6B722ABF2D330092558B /* LaunchScreen.storyboard */; };
 		D2AB6B852ABFC8EA0092558B /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B842ABFC8EA0092558B /* DatabaseHelper.swift */; };
@@ -20,16 +25,23 @@
 		D2AB6B932ABFC9020092558B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B8E2ABFC9020092558B /* ProfileViewController.swift */; };
 		D2AB6B952ABFC91F0092558B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB6B942ABFC91F0092558B /* Main.storyboard */; };
 		D2AB6B9C2ABFC9D20092558B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AB6B9B2ABFC9D20092558B /* CoreData.framework */; };
-		D2AB6B9F2AC00ED70092558B /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B9D2AC00ED70092558B /* Expense+CoreDataClass.swift */; };
-		D2AB6BA02AC00ED70092558B /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6B9E2AC00ED70092558B /* Expense+CoreDataProperties.swift */; };
 		D2AB6BA22AC015540092558B /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6BA12AC015540092558B /* ActivityTableViewCell.swift */; };
+		D2D658A12AC1A57900711829 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D658A02AC1A57900711829 /* AuthViewController.swift */; };
+		D2D658A32AC1B24C00711829 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D658A22AC1B24C00711829 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FE189B3AC9F1ABABE1682E3 /* Pods-BudgetBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetBuddy.debug.xcconfig"; path = "Target Support Files/Pods-BudgetBuddy/Pods-BudgetBuddy.debug.xcconfig"; sourceTree = "<group>"; };
+		3D3D1DE6F6DDC8608707993D /* Pods-BudgetBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetBuddy.release.xcconfig"; path = "Target Support Files/Pods-BudgetBuddy/Pods-BudgetBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		65B8C7E356839F1CA86E7706 /* Pods_BudgetBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgetBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D23A147A2AC1429100062EB8 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D23A147B2AC1429100062EB8 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D29D48BF2AC15E0600913594 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D29D48C02AC15E0600913594 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D29D48C42AC15E5000913594 /* BudgetBud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetBud.xcdatamodel; sourceTree = "<group>"; };
+		D29D48CA2AC1729D00913594 /* Balance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D29D48CB2AC1729D00913594 /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D2AB6B612ABF2D320092558B /* BudgetBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2AB6B642ABF2D320092558B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D2AB6B662ABF2D320092558B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D2AB6B6E2ABF2D320092558B /* BudgetBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetBuddy.xcdatamodel; sourceTree = "<group>"; };
 		D2AB6B702ABF2D330092558B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AB6B732ABF2D330092558B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2AB6B752ABF2D330092558B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,9 +53,9 @@
 		D2AB6B8E2ABFC9020092558B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2AB6B942ABFC91F0092558B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D2AB6B9B2ABFC9D20092558B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D2AB6B9D2AC00ED70092558B /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D2AB6B9E2AC00ED70092558B /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D2AB6BA12AC015540092558B /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		D2D658A02AC1A57900711829 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		D2D658A22AC1B24C00711829 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,18 +64,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AB6B9C2ABFC9D20092558B /* CoreData.framework in Frameworks */,
+				3C7255C9ADD3CD7C7B76F6F8 /* Pods_BudgetBuddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73101193D801194EF5DC1647 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0FE189B3AC9F1ABABE1682E3 /* Pods-BudgetBuddy.debug.xcconfig */,
+				3D3D1DE6F6DDC8608707993D /* Pods-BudgetBuddy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D2AB6B582ABF2D320092558B = {
 			isa = PBXGroup;
 			children = (
 				D2AB6B632ABF2D320092558B /* BudgetBuddy */,
 				D2AB6B622ABF2D320092558B /* Products */,
 				D2AB6B9A2ABFC9D20092558B /* Frameworks */,
+				73101193D801194EF5DC1647 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,9 +104,11 @@
 				D2AB6B962ABFC93E0092558B /* Application */,
 				D2AB6B832ABFC8EA0092558B /* Helper */,
 				D2AB6B862ABFC9020092558B /* Screens */,
+				D2D6589F2AC1A55F00711829 /* Authentication */,
 				D2AB6B972ABFC9750092558B /* Storyboard */,
 				D2AB6B992ABFC9AB0092558B /* Resources */,
 				D2AB6B752ABF2D330092558B /* Info.plist */,
+				D29D48C32AC15E5000913594 /* BudgetBud.xcdatamodeld */,
 			);
 			path = BudgetBuddy;
 			sourceTree = "<group>";
@@ -99,6 +124,7 @@
 		D2AB6B862ABFC9020092558B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D2D658A22AC1B24C00711829 /* TabBarViewController.swift */,
 				D2AB6B872ABFC9020092558B /* Home */,
 				D2AB6B8B2ABFC9020092558B /* Activity */,
 				D2AB6B8D2ABFC9020092558B /* Profile */,
@@ -128,7 +154,6 @@
 		D2AB6B8D2ABFC9020092558B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB6B8E2ABFC9020092558B /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -136,8 +161,8 @@
 		D2AB6B962ABFC93E0092558B /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB6B642ABF2D320092558B /* AppDelegate.swift */,
-				D2AB6B662ABF2D320092558B /* SceneDelegate.swift */,
+				D29D48BF2AC15E0600913594 /* AppDelegate.swift */,
+				D29D48C02AC15E0600913594 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -154,10 +179,11 @@
 		D2AB6B992ABFC9AB0092558B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB6B9D2AC00ED70092558B /* Expense+CoreDataClass.swift */,
-				D2AB6B9E2AC00ED70092558B /* Expense+CoreDataProperties.swift */,
+				D29D48CA2AC1729D00913594 /* Balance+CoreDataClass.swift */,
+				D29D48CB2AC1729D00913594 /* Balance+CoreDataProperties.swift */,
+				D23A147A2AC1429100062EB8 /* Expense+CoreDataClass.swift */,
+				D23A147B2AC1429100062EB8 /* Expense+CoreDataProperties.swift */,
 				D2AB6B702ABF2D330092558B /* Assets.xcassets */,
-				D2AB6B6D2ABF2D320092558B /* BudgetBuddy.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -166,8 +192,18 @@
 			isa = PBXGroup;
 			children = (
 				D2AB6B9B2ABFC9D20092558B /* CoreData.framework */,
+				65B8C7E356839F1CA86E7706 /* Pods_BudgetBuddy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2D6589F2AC1A55F00711829 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D2AB6B8E2ABFC9020092558B /* ProfileViewController.swift */,
+				D2D658A02AC1A57900711829 /* AuthViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2AB6B782ABF2D330092558B /* Build configuration list for PBXNativeTarget "BudgetBuddy" */;
 			buildPhases = (
+				744F84E2F94E206F2F384909 /* [CP] Check Pods Manifest.lock */,
 				D2AB6B5D2ABF2D320092558B /* Sources */,
 				D2AB6B5E2ABF2D320092558B /* Frameworks */,
 				D2AB6B5F2ABF2D320092558B /* Resources */,
+				022877C4B99B3977E711D852 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,22 +274,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		022877C4B99B3977E711D852 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BudgetBuddy/Pods-BudgetBuddy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BudgetBuddy/Pods-BudgetBuddy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BudgetBuddy/Pods-BudgetBuddy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		744F84E2F94E206F2F384909 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BudgetBuddy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D2AB6B5D2ABF2D320092558B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2AB6B652ABF2D320092558B /* AppDelegate.swift in Sources */,
+				D2D658A32AC1B24C00711829 /* TabBarViewController.swift in Sources */,
+				D29D48C52AC15E5000913594 /* BudgetBud.xcdatamodeld in Sources */,
 				D2AB6B852ABFC8EA0092558B /* DatabaseHelper.swift in Sources */,
+				D23A147C2AC1429100062EB8 /* Expense+CoreDataClass.swift in Sources */,
 				D2AB6BA22AC015540092558B /* ActivityTableViewCell.swift in Sources */,
-				D2AB6B9F2AC00ED70092558B /* Expense+CoreDataClass.swift in Sources */,
+				D29D48CC2AC1729D00913594 /* Balance+CoreDataClass.swift in Sources */,
+				D29D48C12AC15E0600913594 /* AppDelegate.swift in Sources */,
 				D2AB6B8F2ABFC9020092558B /* InputExpenseViewController.swift in Sources */,
+				D2D658A12AC1A57900711829 /* AuthViewController.swift in Sources */,
 				D2AB6B912ABFC9020092558B /* HomeViewController.swift in Sources */,
+				D29D48CD2AC1729D00913594 /* Balance+CoreDataProperties.swift in Sources */,
 				D2AB6B932ABFC9020092558B /* ProfileViewController.swift in Sources */,
-				D2AB6B672ABF2D320092558B /* SceneDelegate.swift in Sources */,
-				D2AB6BA02AC00ED70092558B /* Expense+CoreDataProperties.swift in Sources */,
+				D23A147D2AC1429100062EB8 /* Expense+CoreDataProperties.swift in Sources */,
 				D2AB6B902ABFC9020092558B /* HomeExpenseTableViewCell.swift in Sources */,
-				D2AB6B6F2ABF2D320092558B /* BudgetBuddy.xcdatamodeld in Sources */,
+				D29D48C22AC15E0600913594 /* SceneDelegate.swift in Sources */,
 				D2AB6B922ABFC9020092558B /* ActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,14 +475,18 @@
 		};
 		D2AB6B792ABF2D330092558B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FE189B3AC9F1ABABE1682E3 /* Pods-BudgetBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9P2DNH3C2B;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BudgetBuddy/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "BudgetBuddy wants to use camera";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -419,14 +507,18 @@
 		};
 		D2AB6B7A2ABF2D330092558B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D3D1DE6F6DDC8608707993D /* Pods-BudgetBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9P2DNH3C2B;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BudgetBuddy/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "BudgetBuddy wants to use camera";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -469,13 +561,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D2AB6B6D2ABF2D320092558B /* BudgetBuddy.xcdatamodeld */ = {
+		D29D48C32AC15E5000913594 /* BudgetBud.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D2AB6B6E2ABF2D320092558B /* BudgetBuddy.xcdatamodel */,
+				D29D48C42AC15E5000913594 /* BudgetBud.xcdatamodel */,
 			);
-			currentVersion = D2AB6B6E2ABF2D320092558B /* BudgetBuddy.xcdatamodel */;
-			path = BudgetBuddy.xcdatamodeld;
+			currentVersion = D29D48C42AC15E5000913594 /* BudgetBud.xcdatamodel */;
+			path = BudgetBud.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
