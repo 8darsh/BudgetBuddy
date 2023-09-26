@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import iOSDropDown
 class InputExpenseViewController: UIViewController {
     
     @IBOutlet var expenseTitleField: UITextField!
@@ -46,9 +46,20 @@ class InputExpenseViewController: UIViewController {
     var expenseAmount = Int()
     var currentBalance = Int()
     var income = Int()
+    
+    @IBOutlet var dropDownType: DropDown!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.expenseTitleField.text = self.expenseDetails?.title
+        self.dropDownType.optionArray = ["Food","Shopping","Drinks","Essentials","Travel","Bonus","Rent"]
+        self.dropDownType.optionIds = [1,2,3,4,5,6,7]
+        self.dropDownType.didSelect { selectedText, index, id in
+            self.expenseTitleField.text = "\(selectedText)"
+        }
+        self.dropDownType.hideOptionsWhenSelect = false
+
+        self.expenseTitleField?.text = self.expenseDetails?.title
         self.expenseAmountField.text = self.expenseDetails?.amount
         self.dateTime.text = self.expenseDetails?.date
         let path = getDocumentDirectory().appending(path: expenseDetails?.image ?? "hehe")
@@ -63,6 +74,8 @@ class InputExpenseViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(btnSave))
     }
+    
+    
     
     
     @IBAction func switchTransactionBtn(_ sender: UISwitch) {
@@ -186,5 +199,6 @@ extension InputExpenseViewController{
         
         self.navigationController?.popViewController(animated: true)
     }
+    
     
 }

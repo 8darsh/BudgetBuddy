@@ -26,6 +26,8 @@
 		D2AB6B952ABFC91F0092558B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB6B942ABFC91F0092558B /* Main.storyboard */; };
 		D2AB6B9C2ABFC9D20092558B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AB6B9B2ABFC9D20092558B /* CoreData.framework */; };
 		D2AB6BA22AC015540092558B /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB6BA12AC015540092558B /* ActivityTableViewCell.swift */; };
+		D2C101572AC26B540069E596 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C101562AC26B540069E596 /* iOSDropDown.framework */; };
+		D2C101592AC27BE90069E596 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C101582AC27BE90069E596 /* PersonalInfoViewController.swift */; };
 		D2D658A12AC1A57900711829 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D658A02AC1A57900711829 /* AuthViewController.swift */; };
 		D2D658A32AC1B24C00711829 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D658A22AC1B24C00711829 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,8 @@
 		D2AB6B942ABFC91F0092558B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D2AB6B9B2ABFC9D20092558B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D2AB6BA12AC015540092558B /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		D2C101562AC26B540069E596 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2C101582AC27BE90069E596 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		D2D658A02AC1A57900711829 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D2D658A22AC1B24C00711829 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C101572AC26B540069E596 /* iOSDropDown.framework in Frameworks */,
 				D2AB6B9C2ABFC9D20092558B /* CoreData.framework in Frameworks */,
 				3C7255C9ADD3CD7C7B76F6F8 /* Pods_BudgetBuddy.framework in Frameworks */,
 			);
@@ -154,6 +159,8 @@
 		D2AB6B8D2ABFC9020092558B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D2AB6B8E2ABFC9020092558B /* ProfileViewController.swift */,
+				D2C101582AC27BE90069E596 /* PersonalInfoViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 		D2AB6B9A2ABFC9D20092558B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2C101562AC26B540069E596 /* iOSDropDown.framework */,
 				D2AB6B9B2ABFC9D20092558B /* CoreData.framework */,
 				65B8C7E356839F1CA86E7706 /* Pods_BudgetBuddy.framework */,
 			);
@@ -200,7 +208,6 @@
 		D2D6589F2AC1A55F00711829 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB6B8E2ABFC9020092558B /* ProfileViewController.swift */,
 				D2D658A02AC1A57900711829 /* AuthViewController.swift */,
 			);
 			path = Authentication;
@@ -325,6 +332,7 @@
 				D29D48C52AC15E5000913594 /* BudgetBud.xcdatamodeld in Sources */,
 				D2AB6B852ABFC8EA0092558B /* DatabaseHelper.swift in Sources */,
 				D23A147C2AC1429100062EB8 /* Expense+CoreDataClass.swift in Sources */,
+				D2C101592AC27BE90069E596 /* PersonalInfoViewController.swift in Sources */,
 				D2AB6BA22AC015540092558B /* ActivityTableViewCell.swift in Sources */,
 				D29D48CC2AC1729D00913594 /* Balance+CoreDataClass.swift in Sources */,
 				D29D48C12AC15E0600913594 /* AppDelegate.swift in Sources */,

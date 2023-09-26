@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var monthYear: UILabel!
     
     var expenseSetter = Int()
-    var incomeSetter:Int = 60000
+    var incomeSetter = Int()
     var currentBalanceSetter = Int()
     
     @IBOutlet var expensesTitleLbl: UILabel?{
@@ -67,14 +67,20 @@ class HomeViewController: UIViewController {
         vc.completion = {
             dict in
             if vc.switchTransaction.isOn{
+                self.incomeSetter = Int(UserDefaults.standard.string(forKey: "income")!) ?? 0
+                self.expenseSetter = Int(UserDefaults.standard.string(forKey: "expenseAmount")!) ?? 0
                 self.expenseSetter += dict["expenseAmount"] as! Int
+               
             }else{
+                self.expenseSetter = Int(UserDefaults.standard.string(forKey: "expenseAmount")!) ?? 0
+                self.incomeSetter = Int(UserDefaults.standard.string(forKey: "income")!) ?? 0
+                self.incomeSetter +=  dict["expenseAmount"] as! Int
                 
-                self.incomeSetter += dict["expenseAmount"] as! Int
+                
             }
         
         
-            self.currentBalanceSetter = self.incomeSetter - self.expenseSetter
+            self.currentBalanceSetter = (self.incomeSetter) - self.expenseSetter
             UserDefaults.standard.setValue(String(self.currentBalanceSetter), forKey: "currentBalance")
             UserDefaults.standard.setValue(String(self.expenseSetter), forKey: "expenseAmount")
             UserDefaults.standard.setValue(String(self.incomeSetter), forKey: "income")
@@ -109,7 +115,7 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         cell?.expenseTitle.text = expense[indexPath.row].title
         
         if expense[indexPath.row].type{
-            cell?.amountLbl.textColor = .systemRed
+            cell?.amountLbl.textColor = .systemOrange
             
             cell?.amountLbl.text = "-₹\(expense[indexPath.row].amount ?? "")"
         }else{
@@ -118,8 +124,27 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
             cell?.amountLbl.text = "+₹\(expense[indexPath.row].amount ?? "")"
         }
 
+        if expense[indexPath.row].title == "Food"{
+            cell?.expenseImage.image = UIImage(systemName: "fork.knife")
+        }
+        else if expense[indexPath.row].title == "Shopping"{
+            cell?.expenseImage.image = UIImage(systemName: "bag")
+        }
+        else if expense[indexPath.row].title == "Essentials"{
+            cell?.expenseImage.image = UIImage(systemName: "takeoutbag.and.cup.and.straw")
+        }
+        else if expense[indexPath.row].title == "Travel"{
+            cell?.expenseImage.image = UIImage(systemName: "airplane")
+        }
+        else if expense[indexPath.row].title == "Drinks"{
+            cell?.expenseImage.image = UIImage(systemName: "waterbottle")
+        }
+        else if expense[indexPath.row].title == "Bonus"{
+            cell?.expenseImage.image = UIImage(systemName: "indianrupeesign")
+        }else if expense[indexPath.row].title == "Rent"{
+            cell?.expenseImage.image = UIImage(systemName: "indianrupeesign")
+        }
         
-        cell?.expenseImage.image = UIImage(systemName: "person.fill")
         return cell!
     }
     

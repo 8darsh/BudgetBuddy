@@ -34,14 +34,32 @@ class ActivityViewController: UIViewController,UITableViewDelegate,UITableViewDa
         cell?.expenseDate.text = expense[indexPath.row].date
         cell?.expenseTitle.text = expense[indexPath.row].title
         if expense[indexPath.row].type{
-            cell?.amountLbl.textColor = .red
+            cell?.amountLbl.textColor = .systemOrange
             cell?.amountLbl.text = "-₹\(expense[indexPath.row].amount ?? "")"
         }else{
             cell?.amountLbl.textColor = .green
             cell?.amountLbl.text = "+₹\(expense[indexPath.row].amount ?? "")"
         }
-        
-        cell?.expenseImage.image = UIImage(systemName: "person.fill")
+         if expense[indexPath.row].title == "Food"{
+             cell?.expenseImage.image = UIImage(systemName: "fork.knife")
+         }
+         else if expense[indexPath.row].title == "Shopping"{
+             cell?.expenseImage.image = UIImage(systemName: "bag")
+         }
+         else if expense[indexPath.row].title == "Essentials"{
+             cell?.expenseImage.image = UIImage(systemName: "takeoutbag.and.cup.and.straw")
+         }
+         else if expense[indexPath.row].title == "Travel"{
+             cell?.expenseImage.image = UIImage(systemName: "airplane")
+         }
+         else if expense[indexPath.row].title == "Drinks"{
+             cell?.expenseImage.image = UIImage(systemName: "waterbottle")
+         }
+         else if expense[indexPath.row].title == "Bonus"{
+             cell?.expenseImage.image = UIImage(systemName: "indianrupeesign")
+         }else if expense[indexPath.row].title == "Rent"{
+             cell?.expenseImage.image = UIImage(systemName: "indianrupeesign")
+         }
         return cell!
         
     }
